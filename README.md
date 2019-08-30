@@ -33,7 +33,8 @@
 ```
 
 ### 2. 执行datax-web/db下面的sql文件并修改application.yml数据库配置信息
-
+数据库名 `datax_web` (与 配置文件中要一致)
+配置文件在 `datax-web` 模块下的 `\src\main\resources\application.yml`
 ### 3. application.yml配置数据抽取日志文件保存路径
                           
 ```
@@ -42,13 +43,13 @@ etlLogDir: D:\temp\logs\datax-web\
 
 ### 4. 终端访问测试作业接口
 ```
-curl http://localhost:8080/startJob
+curl http://localhost:8066/startJob
 ```
 可以看到成功跑完一个datax作业
 ![](https://raw.githubusercontent.com/peter1040080742/picbed/master/20190505162333.png)
 
 ### 5. 打开网页端启动作业
-http://localhost:8080/index.html#/datax/job
+http://localhost:8066/
 ![](https://raw.githubusercontent.com/huzekang/picbed/master/20190617120207.png)
 
 ### 6. 在线查看作业日志
