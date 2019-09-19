@@ -77,7 +77,8 @@ public class IDataxJobServiceImpl implements IDataxJobService {
                 cmdLine.addArgument(tmpFilePath);
                 DefaultExecutor exec = new DefaultExecutor();
                 exec.setStreamHandler(psh);
-                exec.execute(cmdLine);
+                int executeReturnCode = exec.execute(cmdLine);
+                log.info("执行命令:{},执行结果:{}",cmdLine.toString(),executeReturnCode);
                 EtlJobFileAppender.appendLog(logFilePath, stdout.toString());
             } catch (Exception e) {
                 EtlJobFileAppender.appendLog(logFilePath, e.getMessage());
@@ -93,11 +94,14 @@ public class IDataxJobServiceImpl implements IDataxJobService {
         String dataxPyPath;
         String dataXHome = System.getenv("DATAX_HOME");
         if (StringUtils.isBlank(dataXHome)) {
+            dataXHome = System.getProperty("DATAX_HOME");
+        }
+        if (StringUtils.isBlank(dataXHome)) {
             log.error("DATAX_HOME 环境变量为NULL");
         }
         String osName = System.getProperty("os.name");
         dataXHome = osName.contains("Windows") ? (!dataXHome.endsWith("\\") ? dataXHome.concat("\\") : dataXHome) : (!dataXHome.endsWith("/") ? dataXHome.concat("/") : dataXHome);
-        dataxPyPath = dataXHome + "datax.py";
+        dataxPyPath = dataXHome + "bin/datax.py";
         return dataxPyPath;
     }
 

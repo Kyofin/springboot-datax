@@ -23,34 +23,51 @@
 * [ ] 实现datax分布式作业
 * [ ] 实现部分写插件支持自动建表功能
 
+## 部分截图
+- 查看作业日志
+![](https://raw.githubusercontent.com/huzekang/picbed/master/20190919144220.png)
+
+
+- 配置数据源
+![](https://raw.githubusercontent.com/huzekang/picbed/master/20190919144322.png)
+
+- 根据数据源读取表字段
+![](https://raw.githubusercontent.com/huzekang/picbed/master/20190919144410.png)
+
+- 启动一个配置好的作业
+![](https://raw.githubusercontent.com/huzekang/picbed/master/20190919144522.png)
 
 ## 前端项目
 [github地址](https://github.com/zhouhongfa/datax-vue-admin.git)
-## how to run
-### 1. 下载datax打包之后的文件或者github拉取datax代码打包，配置环境变量
+## 运行项目
+### 1. 下载[阿里datax](https://github.com/alibaba/DataX.git)打包之后的文件到本地，或者在github拉取datax代码打包
+
+### 2. 配置`DATAX_HOME`环境变量
 ```
- DATAX_HOME=G:\learndemo\springboot-datax\datax\bin
+ DATAX_HOME=/openSource/AliBabaDataX/target/datax/datax
 ```
 
-### 2. 执行datax-web/db下面的sql文件并修改application.yml数据库配置信息
+### 3. 执行datax-web/db下面的sql文件并修改`application.yml`数据库配置信息
 数据库名 `datax_web` (与 配置文件中要一致)
 配置文件在 `datax-web` 模块下的 `\src\main\resources\application.yml`
-### 3. application.yml配置数据抽取日志文件保存路径
+
+### 4. 在`application.yml`配置数据抽取日志文件保存路径
                           
 ```
-etlLogDir: D:\temp\logs\datax-web\
+etlLogDir: /temp/datax-web/
 ```
 
-### 4. 终端访问测试作业接口
+### 5. 使用maven打包编译`datax-web`项目
+在此工程的根目录下执行命令
 ```
-curl http://localhost:8066/startJob
+mvn clean install -DskipTests
+
 ```
-可以看到成功跑完一个datax作业
-![](https://raw.githubusercontent.com/peter1040080742/picbed/master/20190505162333.png)
 
-### 5. 打开网页端启动作业
-http://localhost:8066/
-![](https://raw.githubusercontent.com/huzekang/picbed/master/20190617120207.png)
-
-### 6. 在线查看作业日志
+### 6. 编译项目成功后，进入`datax-web/target`目录启动工程
+```java
+ java  -DDATAX_HOME=/Users/huzekang/openSource/AliBabaDataX/target/datax/datax -jar datax-web-0.0.1-SNAPSHOT.jar
+```
+如果没在环境变量里配置`DATAX_HOME`,在启动命令中像上面这样带上也是可以的
+### 7. 访问浏览器`http://localhost:8066`即可看到正常使用了
 ![](https://raw.githubusercontent.com/huzekang/picbed/master/20190708102445.png)
