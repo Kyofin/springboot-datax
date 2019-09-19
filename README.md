@@ -42,9 +42,11 @@
 ## 运行项目
 ### 1. 下载[阿里datax](https://github.com/alibaba/DataX.git)打包之后的文件到本地，或者在github拉取datax代码打包
 
-### 2. 配置`DATAX_HOME`环境变量
+### 2. 配置`DATAX_HOME`环境变量指向阿里的datax目录
+即图中显示的目录
+![](https://raw.githubusercontent.com/huzekang/picbed/master/20190919145146.png)
 ```
- DATAX_HOME=/openSource/AliBabaDataX/target/datax/datax
+ export DATAX_HOME=/openSource/AliBabaDataX/target/datax/datax
 ```
 
 ### 3. 执行datax-web/db下面的sql文件并修改`application.yml`数据库配置信息
