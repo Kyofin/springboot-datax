@@ -18,4 +18,9 @@ public class RunJobDto implements Serializable {
     private String jobJson;
 
     private Long jobConfigId;
+
+    /**
+     * 动态参数json字符串
+     */
+    private String dynamicArgs;
 }

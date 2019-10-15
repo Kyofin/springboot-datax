@@ -23,9 +23,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
-import java.lang.management.ManagementFactory;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
 import java.util.concurrent.*;
 
 /**
@@ -78,7 +77,7 @@ public class IDataxJobServiceImpl implements IDataxJobService {
                 DefaultExecutor exec = new DefaultExecutor();
                 exec.setStreamHandler(psh);
                 int executeReturnCode = exec.execute(cmdLine);
-                log.info("执行命令:{},执行结果:{}",cmdLine.toString(),executeReturnCode);
+                log.info("执行命令:{},执行结果:{}", cmdLine.toString(), executeReturnCode);
                 EtlJobFileAppender.appendLog(logFilePath, stdout.toString());
             } catch (Exception e) {
                 EtlJobFileAppender.appendLog(logFilePath, e.getMessage());
@@ -108,8 +107,23 @@ public class IDataxJobServiceImpl implements IDataxJobService {
 
     @Override
     public String startJobLog(RunJobDto runJobDto) {
-        //取出 jobJson，并转为json对象
-        JSONObject json = JSONObject.parseObject(runJobDto.getJobJson());
+
+
+        //取出 jobJson
+        String jobJson = runJobDto.getJobJson();
+        //判断是否有动态参数
+        if (StrUtil.isNotBlank(runJobDto.getDynamicArgs())) {
+            JSONObject jsonObject = JSON.parseObject(runJobDto.getDynamicArgs());
+            Iterator<String> iterator = jsonObject.keySet().iterator();
+            while (iterator.hasNext()) {
+                String k = iterator.next();
+                String v = jsonObject.get(k).toString();
+                String patten = "\\$\\{" + k + "\\}";
+                //替换
+                jobJson = jobJson.replaceAll(patten, v);
+            }
+        }
+        JSONObject json = JSONObject.parseObject(jobJson);
         //根据jobId和当前时间戳生成日志文件名
         String logFileName = runJobDto.getJobConfigId().toString().concat("_").concat(StrUtil.toString(System.currentTimeMillis()).concat(".log"));
         logFilePath = etlLogDir.concat(logFileName);
