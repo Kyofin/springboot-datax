@@ -329,7 +329,9 @@ public abstract class BaseQueryTool implements QueryToolInterface {
                 }
             } else {
                 if (querySql.contains("where")) {
-                    sql = querySql.concat(" and 1=0");
+                    //2019年10月22日： 把 where 后面的条件都删除，因为有可能用了 动态参数
+                    querySql = querySql.substring(0, querySql.lastIndexOf("where"));
+                    sql = querySql.concat("where 1=0");
                 }
             }
 
