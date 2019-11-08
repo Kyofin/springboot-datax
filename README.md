@@ -6,8 +6,8 @@
 - Database: Mysql5.7
 
 ## introduction
-- 使用springboot启动datax，不再需要用python启动。
-- 以restful接口启动datax作业
+- 使用springboot启动datax。
+
 
 ## todo list
 
