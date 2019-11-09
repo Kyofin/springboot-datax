@@ -50,7 +50,8 @@
 ```
 
 ### 3. 执行datax-web/db下面的sql文件并修改`application.yml`数据库配置信息
-数据库名 `datax_web` (与 配置文件中要一致)
+数据库名 `datax_web` (与 配置文件中要一致)。
+
 配置文件在 `datax-web` 模块下的 `\src\main\resources\application.yml`
 
 ### 4. 在`application.yml`配置数据抽取日志文件保存路径
