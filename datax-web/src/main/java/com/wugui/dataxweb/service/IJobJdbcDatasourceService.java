@@ -1,7 +1,7 @@
 package com.wugui.dataxweb.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.wugui.dataxweb.entity.JobJdbcDatasource;
+import com.wugui.common.entity.JobJdbcDatasource;
 
 /**
  * jdbc数据源配置表服务接口

@@ -1,8 +1,8 @@
 package com.wugui.dataxweb.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.wugui.common.entity.JobLog;
 import com.wugui.dataxweb.dao.JobLogMapper;
-import com.wugui.dataxweb.entity.JobLog;
 import com.wugui.dataxweb.service.IJobLogService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

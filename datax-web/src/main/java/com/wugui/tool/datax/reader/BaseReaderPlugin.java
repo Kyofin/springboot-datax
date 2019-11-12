@@ -3,7 +3,7 @@ package com.wugui.tool.datax.reader;
 import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
-import com.wugui.dataxweb.entity.JobJdbcDatasource;
+import com.wugui.common.entity.JobJdbcDatasource;
 import com.wugui.tool.datax.BaseDataxPlugin;
 import com.wugui.tool.pojo.DataxPluginPojo;
 

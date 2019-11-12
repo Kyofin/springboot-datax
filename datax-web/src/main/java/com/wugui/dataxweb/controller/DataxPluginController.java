@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
-import com.wugui.dataxweb.entity.DataxPlugin;
+import com.wugui.common.entity.DataxPlugin;
 import com.wugui.dataxweb.service.DataxPluginService;
 import com.wugui.dataxweb.util.PageUtils;
 import io.swagger.annotations.Api;

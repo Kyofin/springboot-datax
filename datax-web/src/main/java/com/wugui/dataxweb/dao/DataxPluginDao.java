@@ -1,7 +1,7 @@
 package com.wugui.dataxweb.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.wugui.dataxweb.entity.DataxPlugin;
+import com.wugui.common.entity.DataxPlugin;
 
 /**
  * datax插件信息表数据库访问层

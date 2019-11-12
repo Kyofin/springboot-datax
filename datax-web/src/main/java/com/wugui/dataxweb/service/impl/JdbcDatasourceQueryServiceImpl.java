@@ -2,11 +2,11 @@ package com.wugui.dataxweb.service.impl;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.google.common.collect.Lists;
-import com.wugui.dataxweb.entity.JobJdbcDatasource;
+import com.wugui.common.dstool.query.QueryToolFactory;
+import com.wugui.common.dstool.query.rdbms.AbstractRdbmsQueryTool;
+import com.wugui.common.entity.JobJdbcDatasource;
 import com.wugui.dataxweb.service.IJobJdbcDatasourceService;
 import com.wugui.dataxweb.service.JdbcDatasourceQueryService;
-import com.wugui.tool.query.BaseQueryTool;
-import com.wugui.tool.query.QueryToolFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +34,7 @@ public class JdbcDatasourceQueryServiceImpl implements JdbcDatasourceQueryServic
         if (ObjectUtil.isNull(jdbcDatasource)) {
             return Lists.newArrayList();
         }
-        BaseQueryTool queryTool = QueryToolFactory.getByDbType(jdbcDatasource);
+        AbstractRdbmsQueryTool queryTool = QueryToolFactory.getRdbmsQueryTool(jdbcDatasource);
         return queryTool.getTableNames();
     }
 
@@ -46,7 +46,7 @@ public class JdbcDatasourceQueryServiceImpl implements JdbcDatasourceQueryServic
         if (ObjectUtil.isNull(jdbcDatasource)) {
             return Lists.newArrayList();
         }
-        BaseQueryTool queryTool = QueryToolFactory.getByDbType(jdbcDatasource);
+        AbstractRdbmsQueryTool queryTool = QueryToolFactory.getRdbmsQueryTool(jdbcDatasource);
         return queryTool.getColumnNames(tableName);
     }
 
@@ -58,7 +58,7 @@ public class JdbcDatasourceQueryServiceImpl implements JdbcDatasourceQueryServic
         if (ObjectUtil.isNull(jdbcDatasource)) {
             return Lists.newArrayList();
         }
-        BaseQueryTool queryTool = QueryToolFactory.getByDbType(jdbcDatasource);
+        AbstractRdbmsQueryTool queryTool = QueryToolFactory.getRdbmsQueryTool(jdbcDatasource);
         return queryTool.getColumnsByQuerySql(querySql);
     }
 }

@@ -1,7 +1,7 @@
 package com.wugui.dataxweb.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.wugui.dataxweb.entity.JobLog;
+import com.wugui.common.entity.JobLog;
 
 /**
  * 抽取日志记录表表服务接口

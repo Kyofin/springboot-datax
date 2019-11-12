@@ -2,7 +2,7 @@ package com.wugui.tool.datax.writer;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
-import com.wugui.dataxweb.entity.JobJdbcDatasource;
+import com.wugui.common.entity.JobJdbcDatasource;
 import com.wugui.tool.datax.BaseDataxPlugin;
 import com.wugui.tool.pojo.DataxPluginPojo;
 

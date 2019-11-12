@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
-import com.wugui.dataxweb.entity.JobJdbcDatasource;
+import com.wugui.common.entity.JobJdbcDatasource;
 import com.wugui.dataxweb.service.IJobJdbcDatasourceService;
 import com.wugui.dataxweb.util.PageUtils;
 import io.swagger.annotations.Api;

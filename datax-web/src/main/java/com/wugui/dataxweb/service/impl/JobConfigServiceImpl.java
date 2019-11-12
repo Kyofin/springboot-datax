@@ -1,8 +1,8 @@
 package com.wugui.dataxweb.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.wugui.common.entity.JobConfig;
 import com.wugui.dataxweb.dao.JobConfigMapper;
-import com.wugui.dataxweb.entity.JobConfig;
 import com.wugui.dataxweb.service.IJobConfigService;
 import org.springframework.stereotype.Service;
 

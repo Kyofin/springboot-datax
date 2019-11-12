@@ -2,8 +2,8 @@ package com.wugui.dataxweb.service.impl;
 
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
+import com.wugui.common.entity.JobJdbcDatasource;
 import com.wugui.dataxweb.dto.DataxJsonDto;
-import com.wugui.dataxweb.entity.JobJdbcDatasource;
 import com.wugui.dataxweb.service.DataxJsonService;
 import com.wugui.dataxweb.service.IJobJdbcDatasourceService;
 import com.wugui.tool.datax.DataxJsonHelper;

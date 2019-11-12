@@ -40,12 +40,18 @@
         <druid.version>1.1.14</druid.version>
         <mysql-connector.version>5.1.47</mysql-connector.version>
         <jna.version>4.1.0</jna.version>
+        <mybatisplus.version>3.0.7.1</mybatisplus.version>
+        <swagger.version>2.9.2</swagger.version>
+        <commons-exec-version>1.3</commons-exec-version>
+
+        <dstool.version>1.0.0</dstool.version>
     </properties>
 
     <modules>
         <!--springboot-web-->
         <module>datax-web</module>
         <module>datax-common</module>
+        <module>dstool</module>
     </modules>
 
     <parent>
@@ -87,44 +93,11 @@
                 <artifactId>logback-classic</artifactId>
                 <version>${logback-classic-version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.taobao.tddl</groupId>
-                <artifactId>tddl-client</artifactId>
-                <version>${tddl.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.google.guava</groupId>
-                        <artifactId>guava</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>com.taobao.diamond</groupId>
-                        <artifactId>diamond-client</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-
-            <dependency>
-                <groupId>com.taobao.diamond</groupId>
-                <artifactId>diamond-client</artifactId>
-                <version>${diamond.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alibaba.search.swift</groupId>
-                <artifactId>swift_client</artifactId>
-                <version>${swift-version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit-version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-all</artifactId>
-                <version>${mockito.version}</version>
             </dependency>
 
             <dependency>
@@ -179,6 +152,12 @@
                 <groupId>net.java.dev.jna</groupId>
                 <artifactId>jna</artifactId>
                 <version>${jna.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.wugui</groupId>
+                <artifactId>dstool</artifactId>
+                <version>${dstool.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

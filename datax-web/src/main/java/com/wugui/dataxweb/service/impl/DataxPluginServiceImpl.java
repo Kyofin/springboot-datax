@@ -1,8 +1,8 @@
 package com.wugui.dataxweb.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.wugui.common.entity.DataxPlugin;
 import com.wugui.dataxweb.dao.DataxPluginDao;
-import com.wugui.dataxweb.entity.DataxPlugin;
 import com.wugui.dataxweb.service.DataxPluginService;
 import org.springframework.stereotype.Service;
 

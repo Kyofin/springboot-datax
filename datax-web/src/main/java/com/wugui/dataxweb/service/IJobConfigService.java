@@ -1,7 +1,7 @@
 package com.wugui.dataxweb.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.wugui.dataxweb.entity.JobConfig;
+import com.wugui.common.entity.JobConfig;
 
 /**
  * 作业配置表表服务接口

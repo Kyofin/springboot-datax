@@ -1,7 +1,7 @@
 package com.wugui.dataxweb.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.wugui.dataxweb.entity.JobLog;
+import com.wugui.common.entity.JobLog;
 
 /**
  * 抽取日志记录表表数据库访问层

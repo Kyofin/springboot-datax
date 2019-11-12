@@ -1,8 +1,8 @@
 package com.wugui.dataxweb.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.wugui.common.entity.JobJdbcDatasource;
 import com.wugui.dataxweb.dao.JobJdbcDatasourceMapper;
-import com.wugui.dataxweb.entity.JobJdbcDatasource;
 import com.wugui.dataxweb.service.IJobJdbcDatasourceService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

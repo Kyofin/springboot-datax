@@ -1,7 +1,7 @@
 package com.wugui.dataxweb.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.wugui.dataxweb.entity.DataxPlugin;
+import com.wugui.common.entity.DataxPlugin;
 
 /**
  * datax插件信息表服务接口

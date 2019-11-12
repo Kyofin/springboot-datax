@@ -1,7 +1,7 @@
 package com.wugui.dataxweb.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.wugui.dataxweb.entity.JobJdbcDatasource;
+import com.wugui.common.entity.JobJdbcDatasource;
 
 /**
  * jdbc数据源配置表数据库访问层

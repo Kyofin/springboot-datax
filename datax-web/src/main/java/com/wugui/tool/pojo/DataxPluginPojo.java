@@ -1,6 +1,6 @@
 package com.wugui.tool.pojo;
 
-import com.wugui.dataxweb.entity.JobJdbcDatasource;
+import com.wugui.common.entity.JobJdbcDatasource;
 import lombok.Data;
 
 import java.util.List;
