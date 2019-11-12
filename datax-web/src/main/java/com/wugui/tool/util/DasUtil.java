@@ -1,7 +1,7 @@
 package com.wugui.tool.util;
 
+import com.wugui.database.TableInfo;
 import com.wugui.dataxweb.entity.JobJdbcDatasource;
-import com.wugui.tool.database.TableInfo;
 import com.wugui.tool.query.BaseQueryTool;
 import com.wugui.tool.query.QueryToolFactory;
 import lombok.extern.slf4j.Slf4j;

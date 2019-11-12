@@ -38,4 +38,4 @@ mybatis-plus:
 
 app:
   #  数据抽取日志文件保存路径
-  etlLogDir: D:\temp\logs\datax-web\
+  etlLogDir: /tmp/logs/datax-web
