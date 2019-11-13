@@ -21,7 +21,7 @@
 
 
 ## 前端项目
-[github地址](https://github.com/zhouhongfa/datax-vue-admin.git)
+源码在 `datax-vue-admin-ui` 目录
 ## how to run
 ### 1. 下载datax打包之后的文件或者github拉取datax代码打包，配置环境变量
 ```
