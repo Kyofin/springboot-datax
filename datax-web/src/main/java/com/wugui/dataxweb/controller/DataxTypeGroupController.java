@@ -144,4 +144,25 @@ public class DataxTypeGroupController extends ApiController {
         return success(this.baseService.removeByIds(idList));
     }
 
+    /**
+     * 获取可选组名
+     *
+     * @return
+     */
+    @GetMapping("/getGroupOptions")
+    @ApiOperation("获取可选组名")
+    public R<List<Map<String, String>>> getGroupNameOptions() {
+        return success(this.baseService.getGroupNameOptions());
+    }
+
+    /**
+     * 获取可选类型
+     *
+     * @return
+     */
+    @GetMapping("/getTypeOptions")
+    @ApiOperation("获取可选类型")
+    public R<List<Map<String, String>>> getTypeOptions() {
+        return success(this.baseService.getTypeOptions());
+    }
 }

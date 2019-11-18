@@ -3,6 +3,9 @@ package com.wugui.dataxweb.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.wugui.common.entity.DataxTypeGroup;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 表服务接口
  *
@@ -12,4 +15,7 @@ import com.wugui.common.entity.DataxTypeGroup;
  */
 public interface DataxTypeGroupService extends IService<DataxTypeGroup> {
 
+    List<Map<String, String>> getGroupNameOptions();
+
+    List<Map<String, String>> getTypeOptions();
 }
