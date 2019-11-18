@@ -89,4 +89,12 @@ public class DataxTypeGroup extends Model<DataxTypeGroup> {
     @TableField(value = "create_by")
     private String createBy;
 
+
+    /**
+     * 说明
+     */
+    @ApiModelProperty(value = "说明、注释")
+    @TableField(value = "comments")
+    private String comments;
+
 }
