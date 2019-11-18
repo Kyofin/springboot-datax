@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wugui.dataxweb.dao.DataxTypeGroupMapper">
+    <sql id="Base_Column_List">
+            id,
+            groupname,
+            `type`,
+            status,
+            update_by,
+            update_date,
+            create_date,
+            create_by
+    </sql>
+
+</mapper>
