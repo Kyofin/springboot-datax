@@ -1,11 +1,11 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-select v-model="groupName" clearable placeholder="分组名" style="width: 200px;">
-        <el-option v-for="item in options1" :key="item.key" :label="item.text" :value="item.value" />
+      <el-select v-model="listQuery.groupname" clearable placeholder="分组名" style="width: 200px;">
+        <el-option v-for="(item, index) in groupOptions" :key="index" :label="item.label" :value="item.value" />
       </el-select>
-      <el-select v-model="Type" clearable placeholder="类型" style="width: 200px;">
-        <el-option v-for="item in options2" :key="item.key" :label="item.text" :value="item.value" />
+      <el-select v-model="listQuery.type" clearable placeholder="类型" style="width: 200px;">
+        <el-option v-for="(item, index) in typeOptions" :key="index" :label="item.label" :value="item.value" />
       </el-select>
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="fetchData">
         Search
@@ -34,7 +34,7 @@
         </template>
       </el-table-column>
       <el-table-column label="是否启用" width="110" align="center">
-        <template slot-scope="scope">{{ scope.row.isStart }}
+        <template slot-scope="scope">{{ scope.row.status }}
         </template>
       </el-table-column>
       <el-table-column label="说明" width="110" align="center">
@@ -53,13 +53,35 @@
       </el-table-column>
     </el-table>
     <pagination v-show="total>0" :total="total" :page.sync="listQuery.current" :limit.sync="listQuery.size" @pagination="fetchData" />
+
+    <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
+      <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left">
+        <el-form-item label="组名" prop="groupname">
+          <el-input v-model="temp.groupname" placeholder="组名" />
+        </el-form-item>
+        <el-form-item label="类型" prop="type">
+          <el-input v-model="temp.type" placeholder="类型" />
+        </el-form-item>
+        <el-form-item label="说明">
+          <el-input v-model="temp.comments" :autosize="{ minRows: 2, maxRows: 4}" type="textarea" placeholder="Please input" />
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">
+          Cancel
+        </el-button>
+        <el-button type="primary" @click="dialogStatus==='create'?createData():updateData()">
+          Confirm
+        </el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import * as Api from '@/api/datax-typeGroup'
 import waves from '@/directive/waves' // waves directive
-import { parseTime } from '@/utils'
+// import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 export default {
   name: 'DataxGroupManagement',
@@ -85,15 +107,24 @@ export default {
         current: 1,
         size: 10
       },
-      options1: [
-        { value: 1, text: '金三数据源' },
-        { value: 2, text: '数据同步' }
-      ],
-      Type: 1,
-      options2: [
-        { value: 1, text: '数据源' },
-        { value: 2, text: '作业同步' }
-      ]
+      dialogFormVisible: false,
+      dialogStatus: '',
+      temp: {
+        id: undefined,
+        groupname: '',
+        type: 'Default',
+        comments: ''
+      },
+      textMap: {
+        update: 'Edit',
+        create: 'Create'
+      },
+      rules: {
+        groupname: [{ required: true, message: 'this is required', trigger: 'blur' }],
+        type: [{ required: true, message: 'this is required', trigger: 'blur' }]
+      },
+      groupOptions: [],
+      typeOptions: []
     }
   },
   created() {
@@ -109,16 +140,14 @@ export default {
         this.list = records
         this.listLoading = false
       })
+      this.getGroupOptions()
+      this.getTypeOptions()
     },
     resetTemp() {
       this.temp = {
         id: undefined,
-        datasourceName: '',
-        datasourceGroup: 'Default',
-        jdbcUsername: '',
-        jdbcPassword: '',
-        jdbcUrl: '',
-        jdbcDriverClass: '',
+        groupname: '',
+        type: 'Default',
         comments: ''
       }
     },
@@ -188,20 +217,16 @@ export default {
       })
       // const index = this.list.indexOf(row)
     },
-    handleFetchPv(id) {
-      Api.fetched(id).then(response => {
-        this.pluginData = response
-        this.dialogPvVisible = true
+    getGroupOptions() {
+      Api.getGroupOptions().then(response => {
+        this.groupOptions = response
       })
     },
-    formatJson(filterVal, jsonData) {
-      return jsonData.map(v => filterVal.map(j => {
-        if (j === 'timestamp') {
-          return parseTime(v[j])
-        } else {
-          return v[j]
-        }
-      }))
+    getTypeOptions() {
+      Api.getTypeOptions().then(response => {
+        console.log(response)
+        this.typeOptions = response
+      })
     }
   }
 }

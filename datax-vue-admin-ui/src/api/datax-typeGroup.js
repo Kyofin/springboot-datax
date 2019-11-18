@@ -40,3 +40,21 @@ export function deleted(data) {
     params: data
   })
 }
+
+// 获取可选组名
+export function getGroupOptions(params) {
+  return request({
+    url: '/api/dataxTypeGroup/getGroupOptions',
+    method: 'get',
+    params
+  })
+}
+
+// 获取可选类型
+export function getTypeOptions(params) {
+  return request({
+    url: '/api/dataxTypeGroup/getTypeOptions',
+    method: 'get',
+    params
+  })
+}
