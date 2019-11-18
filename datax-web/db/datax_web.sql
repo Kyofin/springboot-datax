@@ -146,4 +146,17 @@ INSERT INTO `job_log` VALUES (23, 3, '/data/applogs/datax-web/3_1564495260737.lo
 INSERT INTO `job_log` VALUES (24, 3, '/data/applogs/datax-web/3_1564574180078.log', '2019-07-31 19:56:20', 1, NULL, '2019-07-31 19:56:20', NULL);
 INSERT INTO `job_log` VALUES (25, 3, '/data/applogs/datax-web/3_1564574319878.log', '2019-07-31 19:58:40', 1, NULL, '2019-07-31 19:58:40', NULL);
 
+CREATE TABLE `datax_type_group` (
+  `id` bigint(12) NOT NULL AUTO_INCREMENT,
+  `groupname` varchar(100) CHARACTER SET utf8 NOT NULL COMMENT '组名',
+  `type` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '类型',
+  `status` int(1) NOT NULL DEFAULT '1' COMMENT '状态：0删除 1启用 2禁用',
+  `update_by` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `create_by` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `comments` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '说明',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+COMMENT = '分组管理表' ROW_FORMAT = Dynamic;
 SET FOREIGN_KEY_CHECKS = 1;
