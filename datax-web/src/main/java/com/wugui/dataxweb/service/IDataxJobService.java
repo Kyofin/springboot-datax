@@ -22,5 +22,11 @@ public interface IDataxJobService {
 
     LogResult viewJogLog(Long id, int fromLineNum);
 
-    Boolean killJob(String pid);
+    /**
+     * 结束datax进程
+     * @param pid
+     * @param id
+     * @return
+     */
+    Boolean killJob(String pid,Long id);
 }

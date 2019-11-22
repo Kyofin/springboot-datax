@@ -152,9 +152,9 @@ public class JobController {
     }
 
     @ApiOperation("通过传入 进程ID 停止该job作业")
-    @GetMapping("/killJob/{pid}")
-    public R<Boolean> killJob(@PathVariable(value = "pid") String pid) {
-        return R.ok(iDataxJobService.killJob(pid));
+    @GetMapping("/killJob/{pid}/{id}")
+    public R<Boolean> killJob(@PathVariable(value ="pid") String pid,@PathVariable(value = "id") Long id){
+        return R.ok(iDataxJobService.killJob(pid,id));
     }
 
     /**

@@ -1,10 +1,12 @@
 package com.wugui.dataxweb.service.impl;
 
 
+import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.wugui.common.entity.JobLog;
 import com.wugui.common.util.ProcessUtil;
@@ -20,7 +22,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -35,6 +39,9 @@ import java.util.concurrent.*;
 @Slf4j
 @Service
 public class IDataxJobServiceImpl implements IDataxJobService {
+
+    private final static ConcurrentMap<String, String> jobTmpFiles = Maps.newConcurrentMap();
+
     private ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNameFormat("datax-job-%d").build();
 
     private ExecutorService jobPool = new ThreadPoolExecutor(5, 200, 0L, TimeUnit.MILLISECONDS,
@@ -122,10 +129,17 @@ public class IDataxJobServiceImpl implements IDataxJobService {
     }
 
     @Override
-    public Boolean killJob(String pid) {
+    public Boolean killJob(String pid, Long id) {
+        boolean result = ProcessUtil.killProcessByPid(pid);
         //  删除临时文件
-        //FileUtil.del(new File(tmpFilePath));
-        return ProcessUtil.killProcessByPid(pid);
+        if (!CollectionUtils.isEmpty(jobTmpFiles)) {
+            String pathname = jobTmpFiles.get(pid);
+            if (pathname != null) {
+                FileUtil.del(new File(pathname));
+            }
+        }
+        //jobLogService.update(null, Wrappers.<JobLog>lambdaUpdate().set(JobLog::getHandleMsg, "job running，killed").set(JobLog::getHandleCode, 500).eq(JobLog::getId, id));
+        return result;
     }
 
 }
