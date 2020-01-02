@@ -50,5 +50,3 @@ http://localhost:8080/index.html#/datax/job
 
 ### 8. 可以点击查看日志，实时获取日志信息
 ![](https://github.com/WeiYe-Jing/datax-web/blob/master/doc/img/20191119102551.png)
-
-### QQ交流群 776939467
