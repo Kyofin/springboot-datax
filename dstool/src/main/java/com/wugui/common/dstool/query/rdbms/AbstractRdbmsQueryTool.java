@@ -10,8 +10,8 @@ import com.wugui.common.database.TableInfo;
 import com.wugui.common.dstool.meta.DatabaseInterface;
 import com.wugui.common.dstool.meta.DatabaseMetaFactory;
 import com.wugui.common.dstool.query.QueryToolInterface;
+import com.wugui.common.dstool.util.DatasourceUtils;
 import com.wugui.common.entity.JobJdbcDatasource;
-import com.zaxxer.hikari.HikariDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,16 +58,8 @@ public abstract class AbstractRdbmsQueryTool implements QueryToolInterface {
      * @param jobJdbcDatasource
      */
     AbstractRdbmsQueryTool(JobJdbcDatasource jobJdbcDatasource) throws SQLException {
-        //这里默认使用 hikari 数据源
-        HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setUsername(jobJdbcDatasource.getJdbcUsername());
-        dataSource.setPassword(jobJdbcDatasource.getJdbcPassword());
-        dataSource.setJdbcUrl(jobJdbcDatasource.getJdbcUrl());
-        dataSource.setDriverClassName(jobJdbcDatasource.getJdbcDriverClass());
-        //设为只读
-        dataSource.setReadOnly(true);
         this.jobJdbcDatasource = jobJdbcDatasource;
-        this.datasource = dataSource;
+        this.datasource = DatasourceUtils.getDatasource(jobJdbcDatasource);
         this.connection = this.datasource.getConnection();
         currentDbType = JdbcUtils.getDbType(jobJdbcDatasource.getJdbcUrl(), jobJdbcDatasource.getJdbcDriverClass());
         sqlBuilder = DatabaseMetaFactory.getByDbType(currentDbType);
