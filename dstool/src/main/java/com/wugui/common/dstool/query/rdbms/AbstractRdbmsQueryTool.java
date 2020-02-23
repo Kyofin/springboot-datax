@@ -59,8 +59,7 @@ public abstract class AbstractRdbmsQueryTool implements QueryToolInterface {
      */
     AbstractRdbmsQueryTool(JobJdbcDatasource jobJdbcDatasource) throws SQLException {
         this.jobJdbcDatasource = jobJdbcDatasource;
-        this.datasource = DatasourceUtils.getDatasource(jobJdbcDatasource);
-        this.connection = this.datasource.getConnection();
+        connection = DatasourceUtils.getConnection(jobJdbcDatasource);
         currentDbType = JdbcUtils.getDbType(jobJdbcDatasource.getJdbcUrl(), jobJdbcDatasource.getJdbcDriverClass());
         sqlBuilder = DatabaseMetaFactory.getByDbType(currentDbType);
         currentSchema = getSchema();
