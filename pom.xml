@@ -38,7 +38,7 @@
         <mockito.version>1.9.5</mockito.version>
         <postgresql.version>42.2.5</postgresql.version>
         <druid.version>1.1.14</druid.version>
-        <mysql-connector.version>5.1.47</mysql-connector.version>
+        <mysql-connector.version>8.0.16</mysql-connector.version>
         <jna.version>4.1.0</jna.version>
         <mybatisplus.version>3.0.7.1</mybatisplus.version>
         <swagger.version>2.9.2</swagger.version>
